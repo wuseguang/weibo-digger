@@ -1,0 +1,113 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+
+<style>
+#tools{
+    height:25px;
+    padding-left:7px;
+    background:linear-gradient(to bottom, #EFF5FF 0px, #E0ECFF 100%) repeat-x scroll 0 0 transparent;
+}
+*{
+ margin:0;padding:0;
+}
+#actionBoard a{
+    margin-top:5px;
+}
+.content-text{
+ padding:5px;   
+}
+ul li{
+ margin:7px;   
+}
+</style>
+<link href="nvd3/nv.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="ui/easyui.css" />
+<link rel="stylesheet" href="ui/icon.css" />
+<link rel="stylesheet" href="ui/demo.css" />
+</head>
+<body class="easyui-layout">
+<div data-options="region:'north',split:true,border:false,iconCls:'icon-save'" style="height:56px;" title="微博挖掘者">
+<div id="tools">
+        <a href="javascript:void(0)" id="mb" class="easyui-menubutton"   
+        data-options="menu:'#help',iconCls:'icon-help'">帮助</a>
+        </div>
+</div>  
+
+    
+    <div data-options="region:'west',split:true" style="width:200px;">
+		<div  class="easyui-panel" title="博文信息" ><div id="msginfo" class="content-text"></div></div>
+		<div class="easyui-panel" title="进度信息" >
+			<table><tr>
+				<td><svg id="progressChart"></svg></td>
+			<td>当前进度(<span id="progressState">0/1</span>)<br/>
+                	<a href="#" id="refresh-button" class="easyui-linkbutton">刷新数据</a>  
+        		</td></tr></table>
+		</div>
+		<div  class="easyui-panel" title="操作选项"><div id="actionBoard" class="content-text"></div></div>
+		
+	</div> 
+	<div data-options="region:'center',split:true"  style="width:400px;">
+		    <div  class="easyui-panel" id="chart-panel" title="图表信息" data-options="fit:true,tools: [{  
+    iconCls:'icon-search',  
+    handler:function(){showPopChart()}
+  }]" >
+            
+			<div id="displayBoard">
+    			<div id="optionsBoard" style="padding:12px"></div>
+    			<svg id="svg1"></svg>
+  		
+		</div>
+		<div id="footer" class="content-text">底部信息</div>
+        </div>
+	</div>
+
+
+
+<div id="popChart" style="display:hidden"><svg></svg></div>
+<div id="help">
+    <div data-options="iconCls:'icon-baicai'" onclick="$('#usage').dialog({
+        title:'使用说明',width:400,height:200,closed: false,modal: true
+    })">使用说明</div>
+    <div data-options="iconCls:'icon-qiezi'" onclick="$('#about').dialog({
+        title:'使用说明',width:500,height:300,closed: false,modal: true
+    })">关于</div>
+</div>
+<div id="usage"  style="padding:10px;">
+【使用说明】<br/>
+<ul>
+    <li>	①进入相关网页（目前只支持新浪微博和搜狐微博的评论页面）；</li>
+    <li> ②点击火狐浏览器附加组件栏右下方的锤子形图标进行微博统计。</li>
+</ul>
+</div>
+<div id="about" style="padding:10px">
+        <span style="font-size:22px;color:#192C38;font-family:'Microsoft YaHei',微软雅黑,STHeiti,SimHei">
+        微博挖掘者(weibo-digger)&nbsp;&nbsp;0.1版</span><br/>
+        <ul>
+            <li>
+        目前只支持搜狐微博和新浪微博的评论部分,下一步将完成对腾讯微博、百度贴吧、天涯论坛的支持；</li>
+        <li>sohu微博地址：<a href="http://t.sohu.com/u/1625953182">http://t.sohu.com/u/1625953182</a></li>
+        <li>sina微博地址：<a href="http://weibo.com/u/3497415545">http://weibo.com/u/3497415545</a></li>
+        <li>Email：weibo_digger@163.com</li>
+        应用正在开发中，更多建议请联系作者：）
+        </ul>
+</div>
+<script src="nvd3/d3.js"></script>
+<script src="nvd3/nv.js"></script>
+<script src="nvd3/tooltip.js"></script>
+<script src="nvd3/utils.js"></script>
+<script src="nvd3/models/legend.js"></script>
+<script src="nvd3/models/axis.js"></script>
+<script src="nvd3/models/scatter.js"></script>
+<script src="nvd3/models/line.js"></script>
+<script src="nvd3/models/lineChart.js"></script>
+<script src="nvd3/models/pie.js"></script>
+<script src="nvd3/models/pieChart.js"></script>
+<script src="ui/jquery-1.8.0.min.js"></script>
+<script src="ui/easyui.js"></script>
+<script src="dataMining.js"></script>
+<script src="chartRender.js"></script>
+<script src="panel-events.js"></script>
+
+</body>
+</html>
